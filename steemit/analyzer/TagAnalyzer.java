@@ -26,10 +26,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-public class TagAnalyzer { 
-    public static TagAnalyzer analyzer;
+public class TagDataExtractor { 
+    public static TagDataExtractor analyzer;
 
-    TagAnalyzer(){ String fileData = null;
+    TagDataExtractor(){ String fileData = null;
         if (new File("input.saf").exists()) {
             try { fileData = readFile(Paths.get(new File("input.saf").getPath()), "UTF-8"); 
                 System.out.println("Searching for Steemit Analyzer data..."); 
@@ -112,7 +112,7 @@ public class TagAnalyzer {
             if (!new File("input.saf").exists()) try {
                 Files.createFile(new File("input.saf").toPath());
                 System.out.println("First time installation.\nCreated data file, input.saf");
-                EventQueue.invokeLater(() -> { analyzer = new TagAnalyzer(); });
+                EventQueue.invokeLater(() -> { analyzer = new TagDataExtractor(); });
             } catch (IOException ex1) { System.err.println("Data file creation failed. Exiting...\n"+ex1.getMessage()); }
         }
     }
